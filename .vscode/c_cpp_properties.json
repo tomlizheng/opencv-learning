@@ -1,0 +1,22 @@
+{
+    // 用于配置 C/C++ 项目的 IntelliSense 设置、编译器路径和包含路径等。
+
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [                                // 指定头文件的搜索路径
+                "${workspaceFolder}/**"                     // 指代当前工作区文件夹
+            ],
+            "defines": [                                    // 定义的预处理宏
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D:/mingw64/bin/g++.exe",       // 指定编译器路径
+            "cStandard": "c23",                             // 指定 C 的标准版本
+            "cppStandard": "c++23",                         // 指定 C++ 的标准版本
+            "intelliSenseMode": "gcc-x64"                   // 指定 IntelliSense 模式，例如 msvc-x64、gcc-x64、clang-x64 等
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,6 @@
+{
+    // 用于存储各种用户和工作区的配置设置。
+
+    "cmake.cmakePath": "D:/CMake/bin/cmake.exe" // 此处指定自己安装的cmake.exe地址
+}
+  

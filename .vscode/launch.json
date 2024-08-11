@@ -1,0 +1,38 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+
+    // 用于配置 VSCode 中的调试设置，定义调试器的行为、启动配置等
+    // launch.json 文件的配置由多个调试配置块组成，每个块都是一个 JSON 对象，描述如何启动和调试项目。
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) 启动",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/cpp_learn", // 可执行文件路径
+            "args": [],                                      // 传递给程序的命令行参数
+            "stopAtEntry": false,                            // 是否在程序入口处停止
+            "cwd": "${workspaceFolder}",                     // 工作目录
+            "environment": [],                               // 环境变量
+            "externalConsole": false,                        // 是否使用外部终端
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask":"Build",                          // 调试前执行的任务（关联 tasks.json 中的任务）         
+            "miDebuggerPath": "D:/mingw64/bin/gdb.exe"        // 调试器gdb.exe路径
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+
+    // 用于配置和运行构建任务或其他自动化任务，例如编译、测试、部署等。
+    // 任务块祖成
+
+    "version": "2.0.0",
+    "options": {                            // 用于设置任务执行时的一些选项。
+        "cwd":"${workspaceFolder}/build"    // 代表当前工作目录，表示所有任务都会在工作区根目录下的 build 文件夹中执行。
+    },
+    "tasks": [
+        {
+            "label": "cmake",               // 任务的名称，launch.json 中的 preLaunchTask 会引用此名称。
+            "type": "shell",                // 任务的类型，例如 shell（在 shell 中执行命令）、process（直接执行可执行文件）等。
+            "command": "cmake",             // 要执行的命令，例如 g++、make 等。
+            "args":[                        // 传递给命令的参数列表。
+                ".."
+            ]
+        },
+        {
+            "label":"mingw32-make",          // windows下用mingw32-make，Linux/Unix下直接使用make
+            "group":{                        // 指定任务的分组类型，如 build（构建任务）或 test（测试任务）。isDefault 表示是否为默认任务。
+                "kind": "build",
+                "isDefault": true
+            },
+            "command":"mingw32-make",
+            "args": [
+ 
+            ]
+        },
+        {
+            "label":"Build",                 // 任务的名称，launch.json 中的 preLaunchTask 会引用此名称。
+            "dependsOrder": "sequence",      // 表示依赖任务的执行顺序，这里是 sequence，表示按顺序执行依赖的任务。
+            "dependsOn":[                    // 列出了当前任务所依赖的任务，这里是 cmake 和 mingw32-make，这意味着执行 Build 任务时，会先执行 cmake，然后执行 mingw32-make。
+                "cmake",
+                "mingw32-make"
+            ]
+        }
+    ]
+}
